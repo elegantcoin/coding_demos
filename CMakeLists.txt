@@ -1,0 +1,5 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+
+PROJECT(coding_demo)
+
+SUBDIRS(coding_demo)
