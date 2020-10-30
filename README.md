@@ -15,14 +15,14 @@ C++ coding demos
 
 
 
-优先级顺序表  
+## :fire: 优先级顺序表  
 ``` C++
 // () x++  --y / % +   & |  &&  ||  ?:  ,
 // printf getchar() 需要 #include<stdio.h>
 // cout<<bitset<8>(63)<<endl; 00111111
 // cout<<std::dec<<00000010<<endl;  8
 ```
-# 练习题
+## :fire: 练习题
 1. 以下代码输出什么？
 
 ``` C++
@@ -114,7 +114,7 @@ w=e^f^g;
 没有错误。
 
 
-# 改错题
+## :fire: 改错题
 1.
 ``` C++
 #include<stdio.h>
