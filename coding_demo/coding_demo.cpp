@@ -14,13 +14,10 @@
 
 void func()
 {
-	int a=10,b=20;
-	printf("Value of a is %d\n",a);
-	printf("Value of b is %d\n",b);
-	a=+b;
-	b=*a;
-	printf("Value of a is %d\n",a);
-	printf("Value of b is %d\n",b);
+	float p=100.365 ,q=200.98 ,r;
+	r=sizeof(sizeof(sizeof(p+q)));
+	float xx = (float) sizeof(4);
+	printf("Value of r is %f\n",r);
 	
 	
 }

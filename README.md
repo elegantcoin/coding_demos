@@ -143,7 +143,7 @@ w=e^f^g;
 	void main()
 	{
 		int y=10,z;
-		z=::y;  //y 不是全局namespace 的成员 z=y;
+		z=::y;  //error,y 不是全局namespace 的成员 z=y;
 		printf("Value of z is %d\n",z);
 	}
 
@@ -158,14 +158,33 @@ w=e^f^g;
 		printf("Value of a is %d\n",a);
 		printf("Value of b is %d\n",b);
 		a=+b;
-		b=*a;
+		b=*a; //error,干嘛, a 不是指针,b= a
 		printf("Value of a is %d\n",a);
 		printf("Value of b is %d\n",b);
 	}
 ``` 
   
-
-
+5. 
+``` C++
+#include<stdio.h>
+	void main()
+	{
+		float p=100.365 ,q=200.98 ,r;
+		r=sizeof(sizeof(sizeof(p+q)));
+		printf("Value of r is %f\n",r); //8.0000000
+	}
+``` 
+  
+6. 
+``` C++
+#include<stdio.h>
+	void main()
+	{
+		int a=75,b=90,c;
+		c=++a>>b++<<--b;
+		printf("Value of c is %d\n",c);
+	}
+``` 
 
 
 
