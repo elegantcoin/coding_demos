@@ -22,7 +22,7 @@ C++ coding demos
 // cout<<bitset<8>(63)<<endl; 00111111
 // cout<<std::dec<<00000010<<endl;  8
 ```
-## :fire: 练习题
+## :fire: 练习题1
 1. 以下代码输出什么？
 
 ``` C++
@@ -114,7 +114,7 @@ w=e^f^g;
 没有错误。
 
 
-## :fire: 改错题
+## :fire: 改错题1
 1.
 ``` C++
 #include<stdio.h>
@@ -182,12 +182,48 @@ w=e^f^g;
 	{
 		int a=75,b=90,c;
 		c=++a>>b++<<--b;
-		printf("Value of c is %d\n",c);
+		printf("Value of c is %d\n",c); // c = 76>>89<<89 =0
 	}
 ``` 
 
 
+## :fire: 练习题2
 
+1.  以下代码的输出是什么
+``` C++
+	#include<stdio.h>
+	void main()
+	{
+		if(NULL)
+		{
+			printf("Inside the if block \n");
+		}
+		printf("Outside the if block\n"):   //error 编译错误，冒号改为分号
+	}
+``` 
+2.  那么以下代码的输出又是什么
+``` C++
+#include<stdio.h>
+		void main()
+	{
+		int x=10,y=20,z=30;
+		if(++(++x>y++<z--))   //error,(++x>y++<z--)+1 true
+		{
+			printf("The condition is true\n");
+		}
+		else
+		{
+			printf("The condition is false\n");
+		}
+	}
+```
+
+
+
+
+
+
+## :fire: 改错题2
 
 
 

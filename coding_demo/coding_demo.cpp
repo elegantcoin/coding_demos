@@ -14,10 +14,15 @@
 
 void func()
 {
-	float p=100.365 ,q=200.98 ,r;
-	r=sizeof(sizeof(sizeof(p+q)));
-	float xx = (float) sizeof(4);
-	printf("Value of r is %f\n",r);
+	int x=10,y=20,z=30;
+	if((++x>y++<z--)+1)
+	{
+		printf("The condition is true\n");
+	}
+	else
+	{
+		printf("The condition is false\n");
+	}
 	
 	
 }
