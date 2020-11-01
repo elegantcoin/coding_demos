@@ -217,21 +217,113 @@ w=e^f^g;
 		}
 	}
 ```
+3.  那么以下代码的输出又是什么
+``` C++
+#include<stdio.h>
+	void main()
+	{
+		int a=55,b=90,c=81,d=22,r;
+		r =a>b&&c>d?a>c?c<d?a:b:c:d; // a>b&&c>d,a>c,c<d are  False,False，False
+		printf("Result is %d\n",r);  //22
+	}
 
-
-
-
+```
 
 
 ## :fire: 改错题2
 
+1.
+``` C++
+#include<stdio.h>
+void main()
+{
+	int a=NULL;
+	if(printf("Value of a is %d\n",a))  //printed
+	{
+		printf("Inside the if block\n"); //printed
+	}
+	else
+	{
+		printf("Inside the else block\n");
+	}
+	printf("End of the code\n"); //printed
+}
+```
+
+2.
+``` C++
+#include<stdio.h>
+	void main()
+	{
+		if("A">> "B") // error,干嘛, 想说"A"> "B"
+		{
+			printf("A is greater than B\n");
+		}
+
+		else
+		{
+			printf("A is not greater than \n"); // "A"> "B"
+		}
+	}
+```
+
+3.
+``` C++
+#include<stdio.h>
+		void main()
+	{
+		int a,b,c;
+		printf("Enter the values of a b\n");
+		scanf("%d %d",&a,&b);
+		if(c=a>b>NULL?NULL:-1:-2);  //error, 多了冒号,去掉分号
+		{
+			printf("Condition is true\n");
+		};    //error 也要去掉分号
+		else
+		{
+			printf("Condition is false \n");
+		};  // 这个影响不大
+	}
+```
+
+4.
+``` C++
+#include<stdio.h>
+	void main()
+{
+	int x=10,y=20,z=30;
+	if(x<y>z>10>20<30)  //true
+	{
+		printf("The condition is true\n");
+	}
+	else
+	{
+		printf("The condition is false\n");
+	}
+}
+```
+
+5.
+``` C++
+#include<stdio.h>
+	void main()
+	{
+		int a,b,c;
+		printf("Enter the values of a b\n");
+		scanf("%d %d",&a,&b);
+        if(a=b==b)  //true
+        {
+            printf("TRUE\n");
+        }
+        else
+        {
+            printf("FALSE\n");
+        }
+	}
+```
 
 
-
-
-
-
-
+## :fire: 练习题3
 
 
 

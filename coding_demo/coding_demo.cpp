@@ -14,18 +14,20 @@
 
 void func()
 {
-	int x=10,y=20,z=30;
-	if((++x>y++<z--)+1)
+	int a,b,c;
+	printf("Enter the values of a b\n");
+	scanf("%d %d",&a,&b);
+	if(a=b==b)
 	{
-		printf("The condition is true\n");
+		printf("TRUE\n");
 	}
 	else
 	{
-		printf("The condition is false\n");
+		printf("FALSE\n");
 	}
-	
-	
 }
+	
+
 
 
 //---------------------------------------func---------------------------------------
