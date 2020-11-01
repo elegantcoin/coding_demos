@@ -132,12 +132,37 @@ w=e^f^g;
 	void main()
 	{
 		int a=10,b=10,c;
-		c=++a>=---b++;
+		c=++a>=---b++;   //error, c=++a>=-(--b)++     c=1
 		printf("Value of c is %d\n",c);
 	}
 ```
 
+3.
+``` C++
+#include<stdio.h>
+	void main()
+	{
+		int y=10,z;
+		z=::y;  //y 不是全局namespace 的成员 z=y;
+		printf("Value of z is %d\n",z);
+	}
 
+```
+
+4. 
+``` C++
+#include<stdio.h>
+	void main()
+	{
+		int a=10,b=20;
+		printf("Value of a is %d\n",a);
+		printf("Value of b is %d\n",b);
+		a=+b;
+		b=*a;
+		printf("Value of a is %d\n",a);
+		printf("Value of b is %d\n",b);
+	}
+``` 
   
 
 
