@@ -325,6 +325,23 @@ void main()
 
 ## :fire: 练习题3
 
+1.代码执行完后i的值是多少
+``` C++
+for (int i=0;i<=10;i++);  //10
+```
 
+2.代码执行完后输出什么？
+``` C++
+for( ; ; )  //死循环
+	{
+		printf("Computer Programming"); 
+	}
+```
 
-
+3.代码执行完后输出什么？
+``` C++
+for( ; ; )  //死循环
+	{
+		printf("Computer Programming"); 
+	}
+```
