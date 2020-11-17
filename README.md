@@ -595,13 +595,13 @@ void func1(int n,int total)
 1.
 ``` C++
 	#include<stdio.h>
-		void f1(int i)
+	void f1(int i) //f1 函数需要有返回值，否则i一直是局部
 	{
 		i++;
 	} 
 	void main()
 	{
-		int i;
+		int i;  // i需要放在main()函数外面，全局作用
 		for(i=0;i<10; f1(i))   //死循环
 		{
 			printf("Computer programming\n");
@@ -611,19 +611,88 @@ void func1(int n,int total)
 
 2.
 ``` C++
-	#include<stdio.h>
-		void f1(int i)
-	{
-		i++;
-	} 
+#include<stdio.h>
 	void main()
 	{
-		int i;
-		for(i=0;i<10; f1(i))   //死循环
+		printf("start of main function\n");
+		display();
+		printf("End of main function\n");
+	} 
+	void display()   //放main 前面 先定义 再调用
+	{
+		printf("Inside the display function\n");
+	}
+```
+
+3.
+``` C++
+#include<stdio.h>
+	void add(int,int)   //加上;   woid 改为 int
+	void main()
+	{
+		int result;
+		result= add(10,20)+ add(50,60);
+		printf("Result of addition is %d\n",result);
+	} 
+	void add(int p,int q)  // int
+	{
+		int result;
+		result=p+q; //return result;
+	}
+```
+
+
+4.
+``` C++
+#include<stdio.h>
+void main() //void main(int p)
+	{
+		main(10); //main改为 my_main
+	} 
+	void main(int p) //main函数不能重载，main改为 my_main
+	{
+		printf("Inside a user-defined main function\n");
+		p++;
+		printf(" The value of variable p is %d\n",p);
+	}
+```
+
+5.
+``` C++
+#include<stdio.h>
+	int i=0;
+	int init_fn();
+	int condition_fn();
+	int change_fn();
+	void main()
+	{
+		for(init_fn();condition_fn();change_fn())
 		{
 			printf("Computer programming\n");
 		}
 	}
+	int init_fn()
+	{
+		i=1;  //error,缺返回值
+	}
+	int condition_fn() 
+	{
+		return i<=10;
+	}
+	int change_fn() 
+	{
+		return ++i;
+	}
+
+```
+
+## :fire: 练习题5
+5.以下语句的作用是什么？
+``` C++
+	int a=10;
+	int *p=&a;
+	
+	*p=*p+1;
 ```
 
 
@@ -633,17 +702,6 @@ void func1(int n,int total)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+## :fire: 改错题5
 
 
