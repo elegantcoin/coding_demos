@@ -338,10 +338,40 @@ for( ; ; )  //死循环
 	}
 ```
 
-3.代码执行完后输出什么？
+3.代码执行完后`counter`的值是多少？
 ``` C++
-for( ; ; )  //死循环
+int counter = 100;
+	for( ; ; )
 	{
-		printf("Computer Programming"); 
+		if(counter-- == 95)  //94
+			break;
 	}
 ```
+4.代码执行完后`v`的值是多少？
+``` C++
+int v=1;
+	while(v<=10)
+	{
+		if(v>8)
+		{
+			break;
+			printf("%d\n",v);
+		}
+		else
+		{
+			printf("%d\n",v+1);
+			continue;
+		}
+		v++;  // v=1, else中的continue导致 v++这句不被执行
+	}
+```
+
+5.代码执行完后`i`的值是多少？
+``` C++
+int i;
+for(i=10; 0 ; i--)
+	{
+		i--;  //i=10,  for 第二项为0（false）不执行。
+	}
+```
+
