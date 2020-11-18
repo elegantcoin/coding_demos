@@ -687,18 +687,136 @@ void main() //void main(int p)
 ```
 
 ## :fire: 练习题5
-5.以下语句的作用是什么？
+1.以下语句的作用是什么？
 ``` C++
 	int a=10;
 	int *p=&a;
 	
-	*p=*p+1;
+	*p=*p+1;   //解引用，值+1
+```
+2.以下语句的作用是什么？
+``` C++
+#include< stdio.h>
+	void f1(int);
+	void main()
+	{
+		int x=10;
+		f1(x);
+		printf("%d",x);//仍然输出10，f1内的x是局部，不会影响main中的x
+	}
+	void f1(int x);  //想干嘛，多了个分号
+	{
+		x=x+10;
+	}
 ```
 
+3.`*p++`的值是多少？
+``` C++
+int *P, i[3];
 
+	i[0]=3; i[1]=1; i[2]=2;
+	P=&i[1];
+```
 
+	//结果为2，++的优先级高于*
 
+4.代码输出什么？
+``` C++
+	char a[20];
+	char *p="string";
+	int len=strlen(p); /*strlen(p) gives length of string p*/
+	for(i=0;i<len;i++)
+		a[i]=p[len-i]; //p 的最末是'\0',改为p[len-i-1],最后添上'\0'
+		printf("%s",a);  //什么也不输出，
+```
 
+5.代码输出什么？
+``` C++
+	int a[]={10,20,30,40};
+	int *p;
+	p=a;
+	printf("%d",*(p+5)); //-858993460  数组越界  p+3将输出40
+```
+
+6.假设a的内存地址是1000，代码输出什么？
+``` C++
+	int a=10;
+	int *p;
+	p=&a;
+
+	printf("%d\n", (*p)++); //10, 解引用，并把a的值改为11
+	printf("%d\n",*p++); //11，先指针本身向后移动，地址为 1004，然后解引用a
+	printf("%d\n",p--);//1004，返回指针地址1004，然后指针向前移动到1000
+	printf("%d\n",p++); //1000，返回指针地址1000，然后向后移动到1004
+	printf("%d\n",*p++); //-858993460，再移动指针到1008，解引用，
+```
+
+6.假设a的内存地址是1000，b的地址是2000，代码输出什么？
+``` C++
+	int a=50,b=75;
+	int *p,*q;
+	p=&a;
+	q=&b;
+	printf("%d\n",*p+10);  //60
+	printf("%d\n",p+b); //1000+300 =1300
+	printf("%d\n",(*p) +a); //100
+	printf("%d\n",*p +*p); //100
+	printf("%d\n",a+p+b); //1000+125*4=1500 
+	printf("%d\n",q+p+b);  //error，两个指针不能相加
+```
+
+7.定义以下的结构体，则结果提Abc的大小是？
+``` C++
+	struct Abc
+	{
+		int a;  //2 16位编辑器
+		char b; //1
+		float c; //4
+	};
+```
+8.union DATA 的大小是？
+``` C++
+	union DATA
+	{
+		int a[100]; //200 16位编辑器 DATA 是一个 union, 变量公用空间.
+		char b;
+		float c;
+	};
+```
+
+9.以下结构体定义有没有问题？
+``` C++
+	struct Employee
+	{
+		int id;
+		char name[100];
+		Employee e[100]; //编译错误，不能嵌套，可以定义为指针，也就是链表了
+	};
+```
+
+10.假设有个类class叫 X ，下面哪个是类x的构造函数
+``` C++
+(a) 
+	void X()
+	{
+		/*initialization statements*/
+	}
+(b) 
+	X()
+	{
+		int o1;
+		/*initialization statements*/
+		return o1;
+	}
+(c) 
+	X()
+	{
+		/*initialization statements*/
+	}
+	
+(d) 
+	以上都是.
+```
 
 
 
