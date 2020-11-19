@@ -822,4 +822,316 @@ int *P, i[3];
 
 ## :fire: 改错题5
 
+1.
+``` C++
+#include<iostream.h>
+	class DATA
+
+	{
+		float a;
+		int b;
+	public:
+		DATA()
+		{
+			a=0    //漏掉分号，你是故意的。
+			b=-10;
+		}
+		DATA(int p,int q)
+		{
+			a=p;   //'int' to 'float
+			b=q;
+		}
+		void add(DATA t)
+		{
+			DATA res;
+			res.a=a+t.a;
+			res.b=b+t.b;
+			return res;  //void!! no return.
+		}
+		void output()
+		{
+			cout<<"a="<<a<<"b="<<b;  //std::
+		}
+	};
+	void main()
+	{
+		DATA d1(10,20);
+		DATA d2,d3;
+		d3=d1+d3;  //没有重载 不支持。
+		d3.output();
+	}
+```
+
+2.
+``` C++
+	#include<iostream.h>
+	class DATA
+	{
+		float a;
+	public:
+		void set_data(int p)
+		{
+			a=p;
+		} 
+			int operator<=(DATA t)
+		{
+			if(a>t.a)
+			{
+				return 0;
+			}
+			return 1;
+		}
+		void output()
+		{
+			cout<<"a="<<a<<"b="<<b; //error，b从哪里来的？
+		}
+	};
+	void main()
+	{
+		DATA d1, d2,d3;
+		d1. set_data(10);
+		d2. set_data(20);
+		d3. set_data(30);
+		if(d1>d2)  // > 运算符没有重载。
+		{
+			cout<<"d1 is greater than d2"<<endl;
+		}
+		else
+		{
+			cout<<"d1 is not greater than d2" <<endl;
+		}
+		if(d1<=d3)
+		{
+			cout<<"d1 is less than or equal to d3" <<endl;
+		}
+		else
+		{
+			cout<<"d1 is greater than d3" <<endl;
+		}
+	}
+```
+
+3.
+``` C++
+	#include<iostream.h>
+	class DATA
+	{
+		float a;
+		int b;
+	public:
+
+		DATA()
+		{
+			a=50;
+			b=-100;
+		}
+		DATA(int p,int q)
+		{
+			a=p;
+			b=q;
+		}
+		DATA operator+() //error，+重载，需要有入参 DATA d2
+		{
+			DATA res;
+			res.a=a+d2.a;
+			res.b=b+d2.b;
+			return res;
+		}
+		void output()
+		{
+			cout<<"a="<<a<<"b="<<b;
+		}
+	};
+	void main()
+	{
+		DATA d1(10,20);
+		DATA d2,d3;
+		d3=d1+d3;
+		d3.output();
+	}
+```
+
+4.
+``` C++
+	#include<iostream.h>
+	class DATA
+	{
+		float a;
+		int b;
+	public:
+		DATA()
+		{
+			a=50;
+			b=-100;
+		}
+		DATA(int p,int q)
+		{
+			a=p;
+			b=q;
+		}
+		friend DATA operator+(DATA);  
+		void output()
+		{
+			cout<<"a="<<a<<"b="<<b;
+		}
+	};
+	DATA operator+(DATA t) //友元运算符重载函数无this指针，引用传参
+	{
+		DATA res;
+		res.a=a+t.a;  //无法访问到a  能访问到t.a
+		res.b=b+t.b;
+		return res;
+	}
+	void main()
+	{
+		DATA d1(10,20);
+		DATA d2,d3;
+		d3=d1+d3;
+		d3.output();
+	}
+```
+
+
+5.
+``` C++
+#include<iostream.h>
+	class P1
+	{
+		void callparent()  //class 默认私有，改为public外部才能访问
+		{
+			cout<<"Inside parent class"<<endl;
+		}
+	};
+	class P2: public P1
+	{
+		void callchild()
+		{
+			cout<<"Inside child class"<<endl;
+		}
+	};
+	void main()
+	{
+		P1 o1;
+		o1.callparent();
+		o1.callchild();  //erroer 父类没有子类的成员函数。
+		P2 o2;
+		O2.callparent();
+		O2.callchild();
+	}
+```
+
+6.
+``` C++
+#include<iostream.h>
+	class P1
+	{
+		void callparent()
+		{
+			cout<<"Inside parent class"<<endl;
+		}
+	};
+	class P2: public P1
+	{
+		void callchild()
+		{
+			cout<<"Inside child class"<<endl;
+		}
+	};
+	void main()
+	{
+		P1 *p;
+		P2 o1;
+		p=&o1;  //类型是P1
+		p->callparent();
+		p->callchild();//error
+		P1 o2;
+		p=&o2;//类型是P1
+		p->callparent();
+		p->callchild();//erroe ,
+	}
+```
+
+
+7.
+``` C++
+#include<iostream.h>
+	class P1
+	{
+		void callparent()
+		{
+			cout<<"Inside parent class"<<endl;
+		}
+	};
+	class P2: public P1
+	{
+		void callchild()
+		{
+			cout<<"Inside child class"<<endl;
+		}
+	};
+	void main()
+	{
+		P1 *p;
+		P2 o1;
+		p=&o1;  //类型是P1
+		p->callparent();
+		p->callchild();//error
+		P1 o2;
+		p=&o2;//类型是P1
+		p->callparent();
+		p->callchild();//erroe ,
+	}
+```
+
+8.
+``` C++
+	#include<iostream.h>
+	class X
+	{
+	private:
+		int a,b,c;
+	public:
+		void set_data(int p,int q,int r)
+		{
+			a=p;
+			b=q;
+			c=r;
+		}
+
+		void output()
+		{
+			cout<<"a="<<a<<"b="<<b<<"c="<<c<<endl;
+		}
+	};
+	class Y: public X
+	{
+	private:
+		int res;
+	public:
+		void add()
+		{
+			res=a+b+c;
+			cout<<"Addition is "<<res;
+		}
+	};
+	void main()
+	{
+		Y o1;
+		o1.  set_data(10,20,30);
+		o1. add();
+		Y o2;
+		o2.set_data(100,200,300);
+		o2.output();
+		o2.add();
+	}
+```
+
+
+
+
+
+
+
+
+
 
