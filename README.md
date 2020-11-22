@@ -1089,7 +1089,7 @@ int *P, i[3];
 	class X
 	{
 	private:
-		int a,b,c;
+		int a,b,c;  //解决之一，放到public中去
 	public:
 		void set_data(int p,int q,int r)
 		{
@@ -1110,21 +1110,187 @@ int *P, i[3];
 	public:
 		void add()
 		{
-			res=a+b+c;
+			res=a+b+c;  //X的私有变量
 			cout<<"Addition is "<<res;
 		}
 	};
 	void main()
 	{
 		Y o1;
-		o1.  set_data(10,20,30);
-		o1. add();
+		o1.set_data(10,20,30);
+		o1.add();
 		Y o2;
 		o2.set_data(100,200,300);
 		o2.output();
 		o2.add();
 	}
 ```
+
+
+9.
+``` C++
+#include<iostream.h>
+	class P: public Q  //放在基类后面
+	{
+	private:
+		int b;
+		void increment() //父类没有
+		{
+			b=a++;
+			cout<<"The changed value is"<<b;
+		}
+	};
+	class Q
+	{
+	protected:
+		int a;
+	public:
+		void set_data(int p) {
+			a=p; }
+	};
+void main() 
+{
+	P o1;
+	o1.set_data(10);
+	o1.increment();  //能访问私有的？
+	Q o2;
+	o2.set_data(10);
+	o2.increment();   //能访问私有的？
+}
+```
+
+10.
+``` C++
+#include<iostream.h>
+class P {
+protected:
+	int a;
+public:
+	void set_data(int p) {
+		a=p; }
+	void display(int p) {
+		cout<<"a="<<a<<endl; }
+};
+class Q: public P {
+private:
+	int b;
+	void set_data(int p,int q) {
+		set_data(p);  //添加P作用域 P::
+		b=q; }
+
+	virtual void display(int p) //virtual 是定义在基类的吧
+	{
+		cout<<"a="<<a<<"b="<<b<<endl;
+	}
+};
+void main()
+{
+	Q o1,o2;
+	o1.set_data(10,20);
+	o1.display(); //需要有参数
+	o2.set_data(10,20);
+	o2.display(); //需要有参数
+}
+```
+
+11.
+``` C++
+#include<iostream.h>
+	class Abc
+	{
+	protected:
+		int a;
+	public:
+		void inputA()
+		{
+			cin>>a;
+		}
+		void outputA()
+		{
+			cout<<"a="<<a<<endl;
+		}
+	};
+	class Pqr:public Abc
+	{
+	private:
+		int a;
+		int b;
+	public:
+		void inputAB()
+		{
+			cin>>a>>b;
+		}
+			void outputAB()
+		{
+			cout<<"a="<<a<<"b="<<b<<endl;
+		}
+	};
+	void main()
+	{
+		Pqr o1;
+		Pqr* p;
+		p=o1;  //Pqr不能转换为Pqr*类型  p=&o1
+
+		p->inputAB(); 
+		p->outputAB();
+	}
+```
+
+12.
+``` C++
+	#include<iostream.h>
+	class Abc
+	{
+	public:
+		Abc()
+		{
+			cout<<"Constructor of Abc"<<endl;
+		}
+		virtual ~Abc()
+		{
+			cout<<"Destructor of Abc"<<endl;
+		}
+	};
+	class Pqr:public Abc
+	{
+	public:
+		Pqr()
+		{
+			cout<<"Constructor of Pqr"<<endl;
+		}
+		~Pqr()
+		{
+			cout<<"Destructor of Pqr"<<endl;
+		}
+	};
+
+	void main()
+	{
+		Abc *p = new Abc();
+		Abc *r = new Pqr();
+		Pqr *s = new Pqr();
+		Pqr *t = new Abc();  //类型不匹配，强制类型转换 (Pqr *) 
+		delete p;
+		delete r;
+		delete s;
+		delete t;
+	}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
